@@ -13,12 +13,12 @@ abstract class AppTheme {
       primarySwatch: Colors.grey,
       brightness: Brightness.dark,
     ),
-    scaffoldBackgroundColor: _darkColors.background,
+    scaffoldBackgroundColor: _darkColors.primaryBg,
     appBarTheme: _getAppBarTheme(_darkColors),
     textTheme: _getTextTheme(_darkColors),
     inputDecorationTheme: _getInputDecorationTheme(_darkColors),
     bottomNavigationBarTheme: _getBottomNavigationBarTheme(_darkColors),
-    primaryColor: _darkColors.background,
+    primaryColor: _darkColors.primaryBg,
     brightness: Brightness.dark,
   );
 
@@ -26,12 +26,12 @@ abstract class AppTheme {
     colorScheme: ColorScheme.fromSwatch(
       primarySwatch: Colors.grey,
     ),
-    scaffoldBackgroundColor: _lightColors.background,
+    scaffoldBackgroundColor: _lightColors.primaryBg,
     appBarTheme: _getAppBarTheme(_lightColors),
     textTheme: _getTextTheme(_lightColors),
     inputDecorationTheme: _getInputDecorationTheme(_lightColors),
     bottomNavigationBarTheme: _getBottomNavigationBarTheme(_lightColors),
-    primaryColor: _lightColors.background,
+    primaryColor: _lightColors.primaryBg,
   );
 
   static AppBarTheme _getAppBarTheme(AppColors colors) {
@@ -71,7 +71,7 @@ abstract class AppTheme {
     return BottomNavigationBarThemeData(
       elevation: 0,
       type: BottomNavigationBarType.fixed,
-      backgroundColor: colors.background,
+      backgroundColor: colors.primaryBg,
       showUnselectedLabels: false,
       showSelectedLabels: false,
     );

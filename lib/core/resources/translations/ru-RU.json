@@ -1,114 +1,26 @@
 {
   "errors": {
-    "emptyField": "Incorrect email address",
-    "incorrectEmail": "Incorrect email address",
-    "passwordContainsLowercase": "The password must contain at least one lowercase letter",
-    "passwordContainsUppercase": "The password must contain at least one capital letter",
-    "passwordContainsDigits": "The password must contain at least one digit",
-    "passwordNotShorter": "The password must not be shorter than 8 characters",
-    "passwordNotLonger": "The password must not be longer than 30 characters",
-    "passwordMismatch": "Password mismatch",
-    "verificationCodeError": "Invalid verification code"
+    "sum_error": "Сумма не может быть больше макс в номер"
   },
   "buttons": {
     "confirm": "Confirm",
     "continue": "Continue",
-    "verify": "Verify"
+    "verify": "Verify",
+    "calculate": "Рассчитать",
+    "new_calculate": "Новый расчет"
   },
-  "auth": {
-    "joinUs": "Join Us",
-    "signIn": "Sign In",
-    "signInGoogle": "Sing up with google",
-    "alreadyHaveAccount": "Already have an account? ",
-    "dontHaveAnAccount": "Don't have an account? ",
-    "joinUsExclamatory": "Join Us!",
-    "signInExclamatory": "Sign In!",
-    "emailLabel": "Email",
-    "emailHint": "Your email",
-    "passwordLabel": "Password",
-    "passwordHint": "Your password",
-    "confirmPasswordLabel": "Confirm password",
-    "confirmPasswordHint": "Enter your password",
-    "acceptTerms": "Accept the Terms and conditions",
-    "forgotPassword": "Forgot password?",
-    "verifyEmail": {
-      "verifyTitle": "Verify Your Email to Complete Registration",
-      "verifyDescription": "We've sent a verification code to your email. Please copy and paste it below to verify your address and protect your account.",
-      "verifyStepsTitle": "Steps to Verify Your Email:",
-      "verifyStepOne": "Open your email inbox and find the email with the verification code from our service.",
-      "verifyStepTwo": "Copy the verification code from the email.",
-      "verifyStepThree": "Paste the copied code into the field below and click the \"Verify\" button.",
-      "sendCodeAgain": "You can resend the code in {countdown} sec",
-      "resendCode": "Resend code"
-    }
-  },
-  "home" : {
-    "home": "Home",
-    "videoTutorials": {
-      "videoTutorials": "Video tutorials",
-      "minute": {
-        "one": "{} minute",
-        "many": "{} minutes",
-        "other": "{} minutes"
-      }
-    }
-  },
-  "chat" : {
-    "chat": "Chat",
-    "askMe": "Ask me anything…",
-    "onBoarding": {
-      "title": "Completing profile customization",
-      "text": "Your profile is being updated. Please wait a few seconds. Soon you will be able to use all functions."
-    }
-  },
-  "settings": {
-    "editProfile": "Edit Profile",
-    "language": "Language",
-    "logOut": "Log Out",
-    "account" : "Account",
-    "actions" : "Actions",
-    "aboutMe": "About Me",
-    "saveChanges": "Save Changes",
-    "fullName": "Full Name",
-    "dateOfBirth": "Date of Birth",
-    "gender" : "Gender",
-    "location" : "Location",
-    "growth" : "Growth",
-    "weight" : "Weight",
-    "nameOfClub" : "The name of your club",
-    "dominantLeg" : "Dominant leg",
-    "position" : "Position"
-  },
-  "selectors": {
-    "month" : {
-      "january": "January",
-      "february": "February",
-      "march": "March",
-      "april": "April",
-      "may": "May",
-      "june": "June",
-      "july": "July",
-      "august": "August",
-      "september": "September",
-      "october": "October",
-      "november": "November",
-      "december": "December"
-    },
-    "gender" : {
-      "maleValue": "Male",
-      "femaleValue": "Female"
-    },
-    "position" : {
-      "goalkeeper": "Goalkeeper",
-      "rightFullBack": "Right Full-Back",
-      "leftFullBack": "Left Full-Back",
-      "centerBack": "Center-Back",
-      "defensiveMidfielder": "Defensive Midfielder",
-      "centerForward": "Center Forward",
-      "leftMidfielder": "Left Midfielder",
-      "centerMidfielder": "Center Midfielder",
-      "rightMidfielder": "Right Midfielder",
-      "attackingMidfielder": "Attacking Midfielder"
-    }
+  "common": {
+    "comp_amount": "Сумма комплита",
+    "indicate_the_rate": "Указать ставку",
+    "calculation": "Расчет",
+    "pay": "Выплата:",
+    "bet_amount": "Сумма ставки:",
+    "change": "Сдача:",
+    "bet_amount_without_change": "Сумма ставки без сдачи:",
+    "display_in_num": "Выставить в номер:",
+    "display_in_num_forehead": "Выставить в номер, если в ЛОБ:",
+    "completion_payment": "Выплата комплита в ЛОБ:",
+    "payment_of_delivered": "Выплата доставленных, если в ЛОБ:",
+    "select_the_drawn_number": "Выберите выпавший номер"
   }
 }
