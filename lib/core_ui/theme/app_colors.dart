@@ -24,6 +24,7 @@ abstract class AppColors {
   Color get primaryBg;
 
   Color get secondaryBg;
+  Color get tableBg;
 
   // Basic
   Color get basicWhite;
@@ -35,6 +36,7 @@ abstract class AppColors {
   Color get basicBlue;
 
   Color get errorRed;
+  Color get textGray;
 }
 
 class DarkColors implements AppColors {
@@ -45,6 +47,7 @@ class DarkColors implements AppColors {
 
   @override
   Color get secondaryBg => const Color(0xFFbfa68d);
+  Color get tableBg => const Color(0xFFF8ECE1);
 
   @override
   Color get basicWhite => const Color(0xFFFFFFFF);
@@ -60,6 +63,7 @@ class DarkColors implements AppColors {
 
   @override
   Color get errorRed => const Color(0xFFF63030);
+  Color get textGray => const Color(0xFF808B7F);
 }
 
 class LightColors extends DarkColors {

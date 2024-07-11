@@ -5,6 +5,7 @@ import '../../../core_ui/theme/app_colors.dart';
 import '../../../core_ui/theme/app_images.dart';
 import '../../../core_ui/widgets/app_button.dart';
 import '../../../core_ui/widgets/app_image.dart';
+import '../../../core_ui/widgets/roulette_table.dart';
 import '../bloc/home_bloc.dart';
 
 class HomeForm extends StatelessWidget {
@@ -62,11 +63,8 @@ class HomeForm extends StatelessWidget {
               ],
             ),
           ),
-          body: Column(
-            children: <Widget>[
-              SizedBox(height: AppDimens.size100.h),
-              const Placeholder(),
-            ],
+          body: RouletteTable(
+            onPressed: (RouletteCellModel number) {},
           ),
         );
       },

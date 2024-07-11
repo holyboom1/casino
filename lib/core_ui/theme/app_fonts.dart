@@ -7,7 +7,7 @@ class AppFonts {
 
   ///SFProRounded font style
   static TextStyle get playfairDisplay => const TextStyle(
-        fontFamily: kPlayfairDisplayFontFamily,
+        // fontFamily: kPlayfairDisplayFontFamily,
         fontWeight: FontWeight.w700,
       );
 
