@@ -136,7 +136,7 @@ class _AppButtonState extends State<AppButton> {
                   Text(
                     widget.buttonText,
                     style: widget.buttonTextStyle ??
-                        AppFonts.titleM.copyWith(
+                        AppFonts.baseFont16.copyWith(
                           color: textColor.withOpacity(
                             widget.isDisabled ? 0.5 : 1,
                           ),
