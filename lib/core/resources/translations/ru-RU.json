@@ -21,6 +21,9 @@
     "display_in_num_forehead": "Выставить в номер, если в ЛОБ:",
     "completion_payment": "Выплата комплита в ЛОБ:",
     "payment_of_delivered": "Выплата доставленных, если в ЛОБ:",
-    "select_the_drawn_number": "Выберите выпавший номер"
+    "select_the_drawn_number": "Выберите выпавший номер",
+    "settings": "Настройки",
+    "complete_type": "Вид комплита",
+    "max_in_number": "Макс сумма в номер"
   }
 }

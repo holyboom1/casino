@@ -5,6 +5,7 @@ import '../../core/constants/route_constants.dart';
 import '../../features/calculator/screen/calculator_table_screen.dart';
 import '../../features/home/screen/home_screen.dart';
 import '../../features/main/screen/main_screen.dart';
+import '../../features/settings/screen/settings_screen.dart';
 import '../../features/splash/screen/splash_screen.dart';
 import 'services/route_logger.dart';
 
@@ -61,6 +62,19 @@ class AppRouter {
                 path: RouterConstants.calculatorTableRoute,
                 name: RouterConstants.calculatorTableRoute,
                 builder: (BuildContext context, GoRouterState state) => CalculatorTableScreen(),
+                // routes: <RouteBase>[
+                //   GoRoute(
+                //     parentNavigatorKey: _navigatorKey,
+                //     path: RouterConstants.videoTutorialsRoute,
+                //     name: RouterConstants.videoTutorialsRoute,
+                //     builder: (BuildContext context, GoRouterState state) => VideoTutorialsScreen(),
+                //   ),
+                // ],
+              ),
+              GoRoute(
+                path: RouterConstants.settingsRoute,
+                name: RouterConstants.settingsRoute,
+                builder: (BuildContext context, GoRouterState state) => SettingsScreen(),
                 // routes: <RouteBase>[
                 //   GoRoute(
                 //     parentNavigatorKey: _navigatorKey,

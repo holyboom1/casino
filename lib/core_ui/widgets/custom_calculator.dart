@@ -5,6 +5,13 @@ import '../theme/app_images.dart';
 import 'widgets.dart';
 
 class CustomCalculator extends StatefulWidget {
+  final bool isSettingsCalculator;
+
+  const CustomCalculator({
+    this.isSettingsCalculator = false,
+    super.key,
+  });
+
   @override
   _CustomCalculatorState createState() => _CustomCalculatorState();
 }
@@ -41,34 +48,35 @@ class _CustomCalculatorState extends State<CustomCalculator> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          _buildButtonRow([
-            _buildButton(
-              text: '+',
-              value: '+',
-              type: AppButtonType.secondaryGreen,
-            ),
-            _buildButton(
-              text: '-',
-              value: '-',
-              type: AppButtonType.secondaryGreen,
-            ),
-            _buildButton(
-              text: 'x',
-              value: 'x',
-              type: AppButtonType.secondaryGreen,
-            ),
-            _buildButton(
-              text: '/',
-              value: '/',
-              type: AppButtonType.secondaryGreen,
-            ),
-            _buildButton(
-              text: '=',
-              value: '=',
-              type: AppButtonType.secondaryGreen,
-              onPressed: _onEqualsPressed,
-            ),
-          ]),
+          if (!widget.isSettingsCalculator)
+            _buildButtonRow([
+              _buildButton(
+                text: '+',
+                value: '+',
+                type: AppButtonType.secondaryGreen,
+              ),
+              _buildButton(
+                text: '-',
+                value: '-',
+                type: AppButtonType.secondaryGreen,
+              ),
+              _buildButton(
+                text: 'x',
+                value: 'x',
+                type: AppButtonType.secondaryGreen,
+              ),
+              _buildButton(
+                text: '/',
+                value: '/',
+                type: AppButtonType.secondaryGreen,
+              ),
+              _buildButton(
+                text: '=',
+                value: '=',
+                type: AppButtonType.secondaryGreen,
+                onPressed: _onEqualsPressed,
+              ),
+            ]),
           _buildButtonRow([
             _buildButton(
               text: '1',

@@ -1,0 +1,4 @@
+enum Currency {
+  EUR,
+  TUR,
+}
