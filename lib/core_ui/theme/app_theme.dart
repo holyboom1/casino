@@ -54,7 +54,7 @@ abstract class AppTheme {
 
   static InputDecorationTheme _getInputDecorationTheme(AppColors colors) {
     return InputDecorationTheme(
-      errorStyle: AppFonts.normalSfPro.copyWith(
+      errorStyle: AppFonts.playfairDisplay.copyWith(
         fontSize: 0,
         color: Colors.transparent,
       ),

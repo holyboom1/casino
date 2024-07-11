@@ -28,7 +28,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
   ) async {
     FlutterNativeSplash.remove();
     try {
-      unawaited(_appRouter.router.replace(RouterConstants.homeRoute));
+      unawaited(_appRouter.router.replace(RouterConstants.calculatorTableRoute));
     } catch (e) {
       rethrow;
     }

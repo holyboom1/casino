@@ -5,7 +5,8 @@ class RouterConstants {
   static const String homeRoute = '/home';
   static const String chatRoute = '/chat';
   static const String settingsRoute = '/settings';
-  static const String onBoardingChatRoute = '/onBoardingChat';
+
+  static const String calculatorTableRoute = '/calculatorTable';
 
   // Nested Routes
   static const String joinUsRoute = 'joinUs';

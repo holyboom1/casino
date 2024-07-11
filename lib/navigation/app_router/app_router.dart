@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/constants/route_constants.dart';
+import '../../features/calculator/screen/calculator_table_screen.dart';
 import '../../features/home/screen/home_screen.dart';
 import '../../features/main/screen/main_screen.dart';
 import '../../features/splash/screen/splash_screen.dart';
@@ -47,6 +48,19 @@ class AppRouter {
                 path: RouterConstants.homeRoute,
                 name: RouterConstants.homeRoute,
                 builder: (BuildContext context, GoRouterState state) => HomeScreen(),
+                // routes: <RouteBase>[
+                //   GoRoute(
+                //     parentNavigatorKey: _navigatorKey,
+                //     path: RouterConstants.videoTutorialsRoute,
+                //     name: RouterConstants.videoTutorialsRoute,
+                //     builder: (BuildContext context, GoRouterState state) => VideoTutorialsScreen(),
+                //   ),
+                // ],
+              ),
+              GoRoute(
+                path: RouterConstants.calculatorTableRoute,
+                name: RouterConstants.calculatorTableRoute,
+                builder: (BuildContext context, GoRouterState state) => CalculatorTableScreen(),
                 // routes: <RouteBase>[
                 //   GoRoute(
                 //     parentNavigatorKey: _navigatorKey,

@@ -22,6 +22,12 @@ dependencies:
   flutter_screenutil: ^5.9.3
   logger: ^2.3.0
 
+  cached_network_image: ^3.3.1
+  flutter_svg: ^2.0.10+1
+
+  google_fonts: ^6.2.1
+
+
 
 dev_dependencies:
   flutter_test:
@@ -37,16 +43,20 @@ flutter:
     - lib/core/resources/icons/png/
     - lib/core/resources/translations/
     - lib/core/resources/splash/
+    - lib/core/resources/images/
 
   fonts:
-    - family: SFProRounded
+    - family: PlayfairDisplay
       fonts:
-        - asset: lib/core/resources/fonts/SF-Pro-Rounded-Black.otf
-        - asset: lib/core/resources/fonts/SF-Pro-Rounded-Bold.otf
-        - asset: lib/core/resources/fonts/SF-Pro-Rounded-ExtraBold.otf
-        - asset: lib/core/resources/fonts/SF-Pro-Rounded-Light.otf
-        - asset: lib/core/resources/fonts/SF-Pro-Rounded-Medium.otf
-        - asset: lib/core/resources/fonts/SF-Pro-Rounded-Regular.otf
-        - asset: lib/core/resources/fonts/SF-Pro-Rounded-SemiBold.otf
-        - asset: lib/core/resources/fonts/SF-Pro-Rounded-Thin.otf
-        - asset: lib/core/resources/fonts/SF-Pro-Rounded-ExtraLight.otf
+        - asset: lib/core/resources/fonts/PlayfairDisplay-Black.ttf
+        - asset: lib/core/resources/fonts/PlayfairDisplay-BlackItalic.ttf
+        - asset: lib/core/resources/fonts/PlayfairDisplay-Bold.ttf
+        - asset: lib/core/resources/fonts/PlayfairDisplay-BoldItalic.ttf
+        - asset: lib/core/resources/fonts/PlayfairDisplay-ExtraBold.ttf
+        - asset: lib/core/resources/fonts/PlayfairDisplay-ExtraBoldItalic.ttf
+        - asset: lib/core/resources/fonts/PlayfairDisplay-Italic.ttf
+        - asset: lib/core/resources/fonts/PlayfairDisplay-Medium.ttf
+        - asset: lib/core/resources/fonts/PlayfairDisplay-MediumItalic.ttf
+        - asset: lib/core/resources/fonts/PlayfairDisplay-Regular.ttf
+        - asset: lib/core/resources/fonts/PlayfairDisplay-SemiBold.ttf
+        - asset: lib/core/resources/fonts/PlayfairDisplay-SemiBoldItalic.ttf

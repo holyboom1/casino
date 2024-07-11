@@ -1,6 +1,6 @@
 class AppImages {
-  static const String _basePngImages = 'packages/core/resources/icons/png/';
-  static const String _baseSvgIcons = 'packages/core/resources/icons/svg/';
+  static const String _basePngImages = 'lib/core/resources/images';
+  static const String _baseSvgIcons = 'lib/core/resources/images';
 
   // Png Images
   static const String activeLeftLegImage = '${_basePngImages}active_left_leg.png';

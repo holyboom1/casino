@@ -7,3 +7,4 @@ export '../navigation/app_router/app_router.dart';
 export 'constants/route_constants.dart';
 export 'di/app_di.dart';
 export 'localization/locale_keys.g.dart';
+export 'utils/calculator.dart';
