@@ -79,8 +79,9 @@ class _AppButtonState extends State<AppButton> {
         break;
 
       case AppButtonType.secondaryGreen:
-        side = const BorderSide(color: AppColors.transparent);
-        backgroundColor = appColors.secondaryBg;
+        side =  BorderSide(color: AppColors.of(context).basicBlue.withOpacity(0.2));
+        backgroundColor = AppColors.of(context).primaryBg;
+        textColor = AppColors.of(context).basicBlue;
         break;
 
       case AppButtonType.white:
@@ -94,7 +95,7 @@ class _AppButtonState extends State<AppButton> {
         side = const BorderSide(color: AppColors.transparent);
         textColor = appColors.secondaryBg;
         loaderColor = appColors.secondaryBg;
-        backgroundColor = AppColors.transparent;
+        backgroundColor = AppColors.of(context).primaryBg;
         break;
     }
 
@@ -106,6 +107,14 @@ class _AppButtonState extends State<AppButton> {
           borderRadius: BorderRadius.circular(widget.borderRadius ?? radius),
           border: Border.fromBorderSide(side),
           color: backgroundColor,
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+              color: Colors.black.withOpacity(0.25),
+              spreadRadius: 1,
+              blurRadius: 4,
+              offset: const Offset(0, 2),
+            ),
+          ],
         ),
         padding: EdgeInsets.symmetric(
           vertical: widget.verticalPadding ?? AppDimens.padding16.h,
@@ -136,7 +145,7 @@ class _AppButtonState extends State<AppButton> {
                   Text(
                     widget.buttonText,
                     style: widget.buttonTextStyle ??
-                        AppFonts.baseFont16.copyWith(
+                        AppFonts.interMedium30.copyWith(
                           color: textColor.withOpacity(
                             widget.isDisabled ? 0.5 : 1,
                           ),

@@ -43,6 +43,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
       designSize: const Size(1200, 1920),
       minTextAdapt: true,
       ensureScreenSize: true,
+
       builder: (BuildContext context, Widget? child) => LocalizationWidget(
         child: MaterialApp.router(
           debugShowCheckedModeBanner: false,

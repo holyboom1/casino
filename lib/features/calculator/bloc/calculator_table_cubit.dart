@@ -7,6 +7,7 @@ part 'calculator_table_state.dart';
 class CalculatorTableCubit extends Cubit<CalculatorTableState> {
   final AppRouter _appRouter;
   final RouletteCalculator _rouletteCalculator;
+
   CalculatorTableCubit({
     required AppRouter appRouter,
     required RouletteCalculator rouletteCalculator,
@@ -17,8 +18,10 @@ class CalculatorTableCubit extends Cubit<CalculatorTableState> {
   }
 
   void _init() {
-    emit(state.copyWith(
-      rouletteCalculator: _rouletteCalculator,
-    ));
+    emit(state.copyWith(rouletteCalculator: _rouletteCalculator));
   }
+
+  void plus(int number) {}
+
+  void minus(int number) {}
 }

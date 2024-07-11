@@ -1,5 +1,6 @@
 class AppImages {
   static const String _baseSvgIcons = 'lib/core/resources/icons/svg/';
+  static const String _basePngIcons = 'lib/core/resources/icons/png/';
 
   // Svg Icons
   static const String eclipseLogoIcon = '${_baseSvgIcons}eclipse_logo.svg';
@@ -9,4 +10,7 @@ class AppImages {
   static const String backIcon = '${_baseSvgIcons}back.svg';
   static const String clearIcon = '${_baseSvgIcons}clear.svg';
   static const String doneIcon = '${_baseSvgIcons}done.svg';
+
+  // Png Icons
+  static const String eclipseIcon = '${_basePngIcons}eclipse.png';
 }

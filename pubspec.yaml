@@ -40,9 +40,9 @@ flutter:
   uses-material-design: true
   assets:
     - lib/core/resources/icons/svg/
+    - lib/core/resources/icons/png/
     - lib/core/resources/translations/
     - lib/core/resources/splash/
-    - lib/core/resources/images/
 
   fonts:
     - family: PlayfairDisplay
@@ -59,3 +59,15 @@ flutter:
         - asset: lib/core/resources/fonts/PlayfairDisplay-Regular.ttf
         - asset: lib/core/resources/fonts/PlayfairDisplay-SemiBold.ttf
         - asset: lib/core/resources/fonts/PlayfairDisplay-SemiBoldItalic.ttf
+    - family: Inter
+      fonts:
+        - asset: lib/core/resources/fonts/Inter-Black.ttf
+        - asset: lib/core/resources/fonts/Inter-Bold.ttf
+        - asset: lib/core/resources/fonts/Inter-ExtraBold.ttf
+        - asset: lib/core/resources/fonts/Inter-ExtraLight.ttf
+        - asset: lib/core/resources/fonts/Inter-Light.ttf
+        - asset: lib/core/resources/fonts/Inter-Medium.ttf
+        - asset: lib/core/resources/fonts/Inter-Regular.ttf
+        - asset: lib/core/resources/fonts/Inter-SemiBold.ttf
+        - asset: lib/core/resources/fonts/Inter-Thin.ttf
+

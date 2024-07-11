@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/core_export.dart';
 import '../../../core_ui/theme/app_colors.dart';
@@ -15,13 +16,14 @@ class HomeForm extends StatelessWidget {
       builder: (BuildContext context, HomeState state) {
         return Scaffold(
           appBar: AppBar(
+            toolbarHeight: 70,
             backgroundColor: AppColors.of(context).primaryBg,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 AppButton(
                   onPressed: () {},
-                  borderRadius: AppDimens.borderRadius24,
+                  borderRadius: AppDimens.borderRadius12,
                   prefixWidget: const AppImage(
                     image: AppImages.refreshIcon,
                     width: 24,
@@ -29,13 +31,15 @@ class HomeForm extends StatelessWidget {
                   ),
                   buttonText: LocaleKeys.buttons_new_calculate.tr(),
                   verticalPadding: AppDimens.padding20.h,
-                  horizontalPadding: AppDimens.padding40.w,
+                  horizontalPadding: 60,
                 ),
                 SizedBox(width: AppDimens.padding18.w),
                 AppButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    appLocator<AppRouter>().router.push(RouterConstants.calculatorTableRoute);
+                  },
                   type: AppButtonType.white,
-                  borderRadius: AppDimens.borderRadius24,
+                  borderRadius: AppDimens.borderRadius12,
                   prefixWidget: AppImage(
                     image: AppImages.calculatorIcon,
                     color: AppColors.of(context).basicBlue,
@@ -44,13 +48,15 @@ class HomeForm extends StatelessWidget {
                   ),
                   buttonText: LocaleKeys.buttons_calculate.tr(),
                   verticalPadding: AppDimens.padding20.h,
-                  horizontalPadding: AppDimens.padding40.w,
+                  horizontalPadding: 60,
                 ),
                 SizedBox(width: AppDimens.padding18.w),
                 AppButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    appLocator<AppRouter>().router.push(RouterConstants.settingsRoute);
+                  },
                   type: AppButtonType.secondaryGreen,
-                  borderRadius: AppDimens.borderRadius24,
+                  borderRadius: AppDimens.borderRadius12,
                   prefixWidget: const AppImage(
                     image: AppImages.settingsIcon,
                     width: 24,
