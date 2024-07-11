@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/di/app_di.dart';
@@ -18,6 +19,7 @@ class _AppState extends State<App> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
+    FlutterNativeSplash.remove();
     WidgetsBinding.instance.addObserver(this);
   }
 

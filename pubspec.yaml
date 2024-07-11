@@ -21,6 +21,8 @@ dependencies:
   equatable: ^2.0.5
   flutter_screenutil: ^5.9.3
   logger: ^2.3.0
+  flutter_svg: ^2.0.10+1
+  cached_network_image: ^3.3.1
 
   cached_network_image: ^3.3.1
   flutter_svg: ^2.0.10+1
@@ -40,7 +42,6 @@ flutter:
   uses-material-design: true
   assets:
     - lib/core/resources/icons/svg/
-    - lib/core/resources/icons/png/
     - lib/core/resources/translations/
     - lib/core/resources/splash/
     - lib/core/resources/images/

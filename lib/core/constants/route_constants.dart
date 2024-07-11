@@ -1,9 +1,10 @@
 class RouterConstants {
   // Main Routes
   static const String splashRoute = '/';
-  static const String authRoute = '/auth';
-  static const String homeRoute = '/home';
-  static const String chatRoute = '/chat';
+  static const String mainRoute = '/main';
+  static const String calculationRoute = '/calculation';
+  static const String selectNumbersRoute = '/selectNumbers';
+  static const String payRoute = '/pay';
   static const String settingsRoute = '/settings';
 
   static const String calculatorTableRoute = '/calculatorTable';

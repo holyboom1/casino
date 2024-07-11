@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../core/utils/string_extensions.dart';
+import '../../core/core_export.dart';
 
 enum ImageType {
   svg,
@@ -58,6 +58,7 @@ class AppImage extends StatelessWidget {
             child: SvgPicture.asset(
               image,
               fit: fit ?? BoxFit.contain,
+              color: color,
               width: width,
               height: height,
               colorFilter: colorFilter,
@@ -70,11 +71,15 @@ class AppImage extends StatelessWidget {
           child: SizedBox(
             height: height,
             width: width,
-            child: Image.asset(
-              image,
-              width: width,
-              height: height,
-              fit: fit,
+            child: ColorFiltered(
+              colorFilter:
+                  colorFilter ?? const ColorFilter.mode(Colors.transparent, BlendMode.color),
+              child: Image.asset(
+                image,
+                width: width,
+                height: height,
+                fit: fit,
+              ),
             ),
           ),
         );

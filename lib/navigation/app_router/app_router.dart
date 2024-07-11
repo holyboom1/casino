@@ -45,8 +45,8 @@ class AppRouter {
           StatefulShellBranch(
             routes: <RouteBase>[
               GoRoute(
-                path: RouterConstants.homeRoute,
-                name: RouterConstants.homeRoute,
+                path: RouterConstants.mainRoute,
+                name: RouterConstants.mainRoute,
                 builder: (BuildContext context, GoRouterState state) => HomeScreen(),
                 // routes: <RouteBase>[
                 //   GoRoute(

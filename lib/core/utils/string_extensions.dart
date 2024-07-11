@@ -1,15 +1,33 @@
 extension StringExtensions on String {
-  bool get isValidEmail => RegExp(
-        r'(?=.{5,50}$)[^\s@]+[._+-]?[^\s@]+@[^\s@]+\.[^\s@]{2,}$',
-      ).hasMatch(this);
+  bool isValidEmail() => RegExp(
+    '(?=[^\\.])(?=^[^\\.]*(\\.[^\\.]+)*\$)(?=^[^@]*@[^@]*\$)(^(["\']?[a-zA-Z0-9.!#\$%&\'*+-/=?^_`{|}~-]+["\']?)([^\\.])+@[a-zA-Z0-9-]+\\.+(?:.[a-zA-Z0-9-]+)*\$)',
+  ).hasMatch(this);
 
-  bool get containsLowercase => contains(RegExp('[a-z]'));
+  bool isValidPassword() =>
+      RegExp(r'^(?=.*[A-Z])(?=.*[a-z])[0-9A-Za-z!?,.\-+=»]{8,30}$').hasMatch(this);
 
-  bool get containsUppercase => contains(RegExp('[A-Z]'));
+  bool containsLowercase() => contains(RegExp('[a-z]'));
 
-  bool get containsDigits => contains(RegExp('[0-9]'));
+  bool containsUppercase() => contains(RegExp('[A-Z]'));
+
+  bool isDigit() => RegExp(r'\d').hasMatch(this);
 
   bool isSvg() => endsWith('.svg');
 
   bool isNetworkImage() => startsWith('http');
+
+  bool isPicture() =>
+      toLowerCase().endsWith('.svg') ||
+          toLowerCase().endsWith('.png') ||
+          toLowerCase().endsWith('.jpg') ||
+          toLowerCase().endsWith('.jpeg') ||
+          toLowerCase().endsWith('.gif') ||
+          toLowerCase().endsWith('.webp');
+
+  bool isVideo() =>
+      toLowerCase().endsWith('.mp4') ||
+          toLowerCase().endsWith('.mov') ||
+          toLowerCase().endsWith('.avi') ||
+          toLowerCase().endsWith('.flv') ||
+          toLowerCase().endsWith('.wmv');
 }
