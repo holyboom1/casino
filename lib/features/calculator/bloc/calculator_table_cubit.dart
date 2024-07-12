@@ -11,9 +11,10 @@ class CalculatorTableCubit extends Cubit<CalculatorTableState> {
   CalculatorTableCubit({
     required AppRouter appRouter,
     required RouletteCalculator rouletteCalculator,
+    required RouletteCellModel number,
   })  : _appRouter = appRouter,
         _rouletteCalculator = rouletteCalculator,
-        super(CalculatorTableState()) {
+        super(CalculatorTableState(number: number)) {
     _init();
   }
 

@@ -29,7 +29,7 @@ class _CustomCalculatorState extends State<CustomCalculator> {
   void _updateDisplayText(String value) {
     setState(() {
       _displayText = value;
-      widget.onDisplayTextChanged(_displayText); // Call the callback function
+      widget.onDisplayTextChanged(_displayText);
     });
   }
 
@@ -92,28 +92,6 @@ class _CustomCalculatorState extends State<CustomCalculator> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Container(
-            padding: const EdgeInsets.all(16.0).r,
-            decoration: BoxDecoration(
-              color: appColors.basicWhite,
-              borderRadius: BorderRadius.circular(8.0).r,
-              boxShadow: <BoxShadow>[
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.1),
-                  spreadRadius: 1,
-                  blurRadius: 5,
-                ),
-              ],
-            ),
-            child: Text(
-              _displayText,
-              style: AppFonts.playfairDisplay.copyWith(
-                fontSize: 24.0.sp,
-                color: appColors.basicBlue,
-              ),
-            ),
-          ),
-          const SizedBox(height: 20.0),
           if (!widget.isSettingsCalculator)
             _buildButtonRow([
               _buildButton(

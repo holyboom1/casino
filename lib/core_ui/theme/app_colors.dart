@@ -19,6 +19,8 @@ abstract class AppColors {
   }
 
   static const Color transparent = Color(0x00000000);
+  static const Color black = Color(0xFF201C24);
+  static const Color red = Color(0xFFd24545);
 
   // Background
   Color get primaryBg;

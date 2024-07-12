@@ -36,7 +36,7 @@ class HomeForm extends StatelessWidget {
                 SizedBox(width: AppDimens.padding18.w),
                 AppButton(
                   onPressed: () {
-                    appLocator<AppRouter>().router.push(RouterConstants.calculatorTableRoute);
+                    // appLocator<AppRouter>().router.push(RouterConstants.calculatorTableRoute);
                   },
                   type: AppButtonType.white,
                   borderRadius: AppDimens.borderRadius12,
@@ -70,7 +70,12 @@ class HomeForm extends StatelessWidget {
             ),
           ),
           body: RouletteTable(
-            onPressed: (RouletteCellModel number) {},
+            onPressed: (RouletteCellModel number) {
+              appLocator<AppRouter>().router.push(
+                    RouterConstants.calculatorTableRoute,
+                    extra: number,
+                  );
+            },
           ),
         );
       },

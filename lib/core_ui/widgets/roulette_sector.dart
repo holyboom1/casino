@@ -37,7 +37,9 @@ class RouletteSector extends StatelessWidget {
             ),
           ),
           AppImage(
-            image: AppImages.eclipseIcon,
+            image: color == AppColors.of(context).basicBlue
+                ? AppImages.eclipseIcon
+                : AppImages.eclipse2Icon,
             width: 146.w,
             height: 66.h,
           ),

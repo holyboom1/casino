@@ -8,10 +8,18 @@ import '../bloc/calculator_table_cubit.dart';
 import 'calculator_table_form.dart';
 
 class CalculatorTableScreen extends StatelessWidget {
+  final RouletteCellModel number;
+
+  const CalculatorTableScreen({
+    required this.number,
+    super.key,
+  });
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<CalculatorTableCubit>(
       create: (BuildContext context) => CalculatorTableCubit(
+        number: number,
         appRouter: appLocator<AppRouter>(),
         rouletteCalculator: appLocator<RouletteCalculator>(),
       ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/constants/route_constants.dart';
+import '../../core/utils/calculator.dart';
 import '../../features/calculator/screen/calculator_table_screen.dart';
 import '../../features/calculator_result/screen/calculator_result_screen.dart';
 import '../../features/home/screen/home_screen.dart';
@@ -62,7 +63,10 @@ class AppRouter {
               GoRoute(
                 path: RouterConstants.calculatorTableRoute,
                 name: RouterConstants.calculatorTableRoute,
-                builder: (BuildContext context, GoRouterState state) => CalculatorTableScreen(),
+                builder: (BuildContext context, GoRouterState state) {
+                  final RouletteCellModel number = state.extra as RouletteCellModel;
+                  return CalculatorTableScreen(number: number);
+                },
                 routes: <RouteBase>[
                   GoRoute(
                     parentNavigatorKey: _navigatorKey,

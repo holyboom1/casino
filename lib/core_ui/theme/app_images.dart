@@ -13,4 +13,5 @@ class AppImages {
 
   // Png Icons
   static const String eclipseIcon = '${_basePngIcons}eclipse.png';
+  static const String eclipse2Icon = '${_basePngIcons}eclipse2.png';
 }

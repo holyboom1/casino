@@ -49,8 +49,8 @@ class CalculatorTableForm extends StatelessWidget {
                 SizedBox(height: AppDimens.size100.h),
                 Center(
                   child: RouletteSector(
-                    number: '13',
-                    color: AppColors.of(context).basicBlue,
+                    number: state.number.number.toString(),
+                    color: state.number.color,
                   ),
                 ),
                 SizedBox(height: 30.h),
@@ -87,6 +87,7 @@ class CalculatorTableForm extends StatelessWidget {
                     context.read<CalculatorTableCubit>().displayText(value);
                   },
                 ),
+                const Spacer(),
               ],
             ),
           ),
