@@ -19,9 +19,7 @@ class CalculatorTableForm extends StatelessWidget {
         }
         return Scaffold(
           appBar: AppBar(
-            toolbarHeight: 70,
             backgroundColor: AppColors.of(context).primaryBg,
-            leadingWidth: 60,
             title: Text(
               LocaleKeys.common_indicate_the_rate.tr(),
               style: AppFonts.interMedium30.copyWith(
@@ -33,14 +31,18 @@ class CalculatorTableForm extends StatelessWidget {
               onTap: () {
                 appLocator<AppRouter>().router.pop();
               },
-              child: const Padding(
-                padding: EdgeInsets.only(left: 20),
-                child: AppImage(image: AppImages.backIcon),
+              child: Padding(
+                padding: EdgeInsets.only(left: 100.w),
+                child: AppImage(
+                  image: AppImages.backIcon,
+                  width: 74.r,
+                  height: 74.r,
+                ),
               ),
             ),
           ),
           body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 100),
+            padding: EdgeInsets.symmetric(horizontal: 100.w),
             child: Column(
               children: <Widget>[
                 SizedBox(height: AppDimens.size100.h),
@@ -50,12 +52,12 @@ class CalculatorTableForm extends StatelessWidget {
                     color: AppColors.of(context).basicBlue,
                   ),
                 ),
-                const SizedBox(height: 30),
+                SizedBox(height: 30.h),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 54),
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 54).r,
                   decoration: BoxDecoration(
                     color: AppColors.of(context).secondaryBg,
-                    borderRadius: BorderRadius.circular(24),
+                    borderRadius: BorderRadius.circular(24).r,
                   ),
                   child: Align(
                     alignment: Alignment.centerLeft,
@@ -67,9 +69,9 @@ class CalculatorTableForm extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 30),
+                SizedBox(height: 30.h),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20).h,
                   alignment: Alignment.centerLeft,
                   child: Text(
                     LocaleKeys.common_bet_amount.tr(),
@@ -78,9 +80,9 @@ class CalculatorTableForm extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: 10.h),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20).h,
                   alignment: Alignment.centerLeft,
                   child: Text(
                     '4.000',
@@ -90,7 +92,8 @@ class CalculatorTableForm extends StatelessWidget {
                     ),
                   ),
                 ),
-                CustomCalculator(),
+                const Spacer(),
+                const CustomCalculator(),
               ],
             ),
           ),

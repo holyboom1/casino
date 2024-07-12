@@ -47,4 +47,9 @@ class AppFonts {
         fontWeight: FontWeight.w500,
         fontSize: 48.0.sp,
       );
+  static TextStyle get interMedium42 => TextStyle(
+        fontFamily: kInterFamily,
+        fontWeight: FontWeight.w500,
+        fontSize: 42.0.sp,
+      );
 }

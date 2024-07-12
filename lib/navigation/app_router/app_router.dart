@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../core/constants/route_constants.dart';
 import '../../features/calculator/screen/calculator_table_screen.dart';
+import '../../features/calculator_result/screen/calculator_result_screen.dart';
 import '../../features/home/screen/home_screen.dart';
 import '../../features/main/screen/main_screen.dart';
 import '../../features/settings/screen/settings_screen.dart';
@@ -62,14 +63,15 @@ class AppRouter {
                 path: RouterConstants.calculatorTableRoute,
                 name: RouterConstants.calculatorTableRoute,
                 builder: (BuildContext context, GoRouterState state) => CalculatorTableScreen(),
-                // routes: <RouteBase>[
-                //   GoRoute(
-                //     parentNavigatorKey: _navigatorKey,
-                //     path: RouterConstants.videoTutorialsRoute,
-                //     name: RouterConstants.videoTutorialsRoute,
-                //     builder: (BuildContext context, GoRouterState state) => VideoTutorialsScreen(),
-                //   ),
-                // ],
+                routes: <RouteBase>[
+                  GoRoute(
+                    parentNavigatorKey: _navigatorKey,
+                    path: RouterConstants.calculatorResultRoute,
+                    name: RouterConstants.calculatorResultRoute,
+                    builder: (BuildContext context, GoRouterState state) =>
+                        CalculatorResultScreen(),
+                  ),
+                ],
               ),
               GoRoute(
                 path: RouterConstants.settingsRoute,

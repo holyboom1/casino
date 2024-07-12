@@ -66,10 +66,10 @@ class _CurrencySwitcherState extends State<CurrencySwitcher> {
       child: GestureDetector(
         onTap: () => onTap(currency),
         child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 12.0),
+          padding: const EdgeInsets.symmetric(vertical: 20.0).h,
           decoration: BoxDecoration(
             color: isSelected ? appColors.basicWhite : appColors.secondaryBg,
-            borderRadius: BorderRadius.circular(12.0),
+            borderRadius: BorderRadius.circular(24.0).r,
             boxShadow: isSelected
                 ? <BoxShadow>[
                     BoxShadow(
@@ -83,7 +83,7 @@ class _CurrencySwitcherState extends State<CurrencySwitcher> {
           child: Text(
             label,
             textAlign: TextAlign.center,
-            style: AppFonts.interMedium30.copyWith(color: appColors.basicBlue),
+            style: AppFonts.interMedium48.copyWith(color: appColors.basicBlue),
           ),
         ),
       ),

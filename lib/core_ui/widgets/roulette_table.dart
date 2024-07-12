@@ -17,7 +17,7 @@ class RouletteTable extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        SizedBox(height: 100.h),
+        SizedBox(height: 20.h),
         CustomPaint(
           painter:
               RouletteTablePainter(lineColor: Colors.black, bgColor: AppColors.of(context).tableBg),
@@ -69,12 +69,13 @@ class RouletteTable extends StatelessWidget {
                         ),
                     ],
                   ),
-                  if ((i + 1) % 3 == 0 && i != 11)
+                  if ((i + 1) % 4 == 0 && i != 11)
                     Container(
                       width: 900.w,
                       height: 10.h,
-                      decoration: const BoxDecoration(
-                        border: Border(
+                      decoration: BoxDecoration(
+                        color: AppColors.of(context).tableBg,
+                        border: const Border(
                           left: BorderSide(width: 2.0),
                           right: BorderSide(width: 2.0),
                         ),
@@ -123,7 +124,7 @@ class CellWidget extends StatelessWidget {
               width: index == 2 ? 2.0 : 0.0,
             ),
             top: BorderSide(
-              width: crossIndex % 3 == 0 ? 2.0 : 0.0,
+              width: crossIndex % 4 == 0 ? 2.0 : 0.0,
             ),
           ),
           color: AppColors.of(context).tableBg,

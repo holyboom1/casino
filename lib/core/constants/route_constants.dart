@@ -8,7 +8,7 @@ class RouterConstants {
   static const String calculatorTableRoute = '/calculatorTable';
 
   // Nested Routes
-  static const String joinUsRoute = 'joinUs';
+  static const String calculatorResultRoute = 'calculatorResult';
   static const String joinUsPasswordRoute = 'joinUsPasswordRoute';
   static const String signInRoute = 'signIn';
   static const String verificationCodeRoute = 'verificationCode';

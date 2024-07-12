@@ -21,6 +21,7 @@ class AppButton extends StatefulWidget {
   final Widget? prefixWidget;
   final double? borderRadius;
   final double? width;
+  final double? height;
   final bool isLoading;
   final bool isDisabled;
   final WidgetStateProperty<BorderSide?>? side;
@@ -35,6 +36,7 @@ class AppButton extends StatefulWidget {
     this.prefixWidget,
     this.borderRadius,
     this.width,
+    this.height,
     this.isLoading = false,
     this.isDisabled = false,
     this.side,
@@ -79,7 +81,7 @@ class _AppButtonState extends State<AppButton> {
         break;
 
       case AppButtonType.secondaryGreen:
-        side =  BorderSide(color: AppColors.of(context).basicBlue.withOpacity(0.2));
+        side = BorderSide(color: AppColors.of(context).basicBlue.withOpacity(0.2));
         backgroundColor = AppColors.of(context).primaryBg;
         textColor = AppColors.of(context).basicBlue;
         break;
@@ -103,6 +105,7 @@ class _AppButtonState extends State<AppButton> {
       onTap: widget.isDisabled ? null : widget.onPressed,
       child: Container(
         width: widget.width,
+        height: widget.height,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(widget.borderRadius ?? radius),
           border: Border.fromBorderSide(side),

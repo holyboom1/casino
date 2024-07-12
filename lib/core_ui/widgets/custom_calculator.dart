@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../core/core_export.dart';
 import '../theme/app_colors.dart';
+import '../theme/app_fonts.dart';
 import '../theme/app_images.dart';
 import 'widgets.dart';
 
@@ -44,7 +46,7 @@ class _CustomCalculatorState extends State<CustomCalculator> {
     final AppColors appColors = AppColors.of(context);
 
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16.0).r,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -170,17 +172,22 @@ class _CustomCalculatorState extends State<CustomCalculator> {
   }) {
     return Expanded(
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(16.0).r,
         child: AppButton(
           buttonText: text,
           type: type,
+          width: 288.w,
+          height: 120.h,
+          buttonTextStyle: AppFonts.interMedium42.copyWith(
+            color: AppColors.of(context).basicBlue,
+          ),
           onPressed: onPressed ?? () => _onButtonPressed(value),
-          verticalPadding: 16.0,
-          horizontalPadding: 16.0,
+          verticalPadding: 16.0.h,
+          horizontalPadding: 16.0.w,
           prefixWidget: prefixIcon != null
               ? AppImage(
                   image: prefixIcon,
-                  width: 24,
+                  width: 48.w,
                   color: AppColors.of(context).basicBlue,
                 )
               : null,

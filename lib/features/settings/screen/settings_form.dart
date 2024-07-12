@@ -14,9 +14,7 @@ class SettingsForm extends StatelessWidget {
       builder: (BuildContext context, SettingsState state) {
         return Scaffold(
           appBar: AppBar(
-            toolbarHeight: 70,
             backgroundColor: AppColors.of(context).primaryBg,
-            leadingWidth: 60,
             title: Text(
               LocaleKeys.common_settings.tr(),
               style: AppFonts.interMedium30.copyWith(
@@ -28,19 +26,29 @@ class SettingsForm extends StatelessWidget {
               onTap: () {
                 appLocator<AppRouter>().router.pop();
               },
-              child: const Padding(
-                padding: EdgeInsets.only(left: 20),
-                child: AppImage(image: AppImages.backIcon),
+              child: Padding(
+                padding: EdgeInsets.only(left: 100.w),
+                child: AppImage(
+                  image: AppImages.backIcon,
+                  width: 74.r,
+                  height: 74.r,
+                ),
               ),
             ),
           ),
           body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 100),
+            padding: EdgeInsets.symmetric(horizontal: 100.w, vertical: 48.h),
             child: Column(
               children: <Widget>[
-                SizedBox(height: AppDimens.size100.h),
-                const Center(child: AppImage(image: AppImages.eclipseIcon)),
-                const SizedBox(height: 30),
+                const Spacer(),
+                Center(
+                  child: AppImage(
+                    image: AppImages.eclipseIcon,
+                    width: 522.r,
+                    height: 236.r,
+                  ),
+                ),
+                const Spacer(),
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
@@ -50,14 +58,14 @@ class SettingsForm extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: 10.h),
                 CurrencySwitcher(),
-                const SizedBox(height: 10),
+                SizedBox(height: 48.h),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 54),
+                  padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 54.h),
                   decoration: BoxDecoration(
                     color: AppColors.of(context).secondaryBg,
-                    borderRadius: BorderRadius.circular(24),
+                    borderRadius: BorderRadius.circular(24).r,
                   ),
                   child: Align(
                     alignment: Alignment.centerLeft,
@@ -69,7 +77,9 @@ class SettingsForm extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 10),
+                const Spacer(
+                  flex: 2,
+                ),
                 const CustomCalculator(isSettingsCalculator: true),
               ],
             ),

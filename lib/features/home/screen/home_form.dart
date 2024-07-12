@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../core/core_export.dart';
 import '../../../core_ui/theme/app_colors.dart';
@@ -16,22 +15,23 @@ class HomeForm extends StatelessWidget {
       builder: (BuildContext context, HomeState state) {
         return Scaffold(
           appBar: AppBar(
-            toolbarHeight: 70,
             backgroundColor: AppColors.of(context).primaryBg,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 AppButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    appLocator<AppRouter>().router.pushNamed(RouterConstants.calculatorResultRoute);
+                  },
                   borderRadius: AppDimens.borderRadius12,
-                  prefixWidget: const AppImage(
+                  prefixWidget: AppImage(
                     image: AppImages.refreshIcon,
-                    width: 24,
-                    height: 24,
+                    width: 48.r,
+                    height: 48.r,
                   ),
                   buttonText: LocaleKeys.buttons_new_calculate.tr(),
                   verticalPadding: AppDimens.padding20.h,
-                  horizontalPadding: 60,
+                  horizontalPadding: 60.w,
                 ),
                 SizedBox(width: AppDimens.padding18.w),
                 AppButton(
@@ -43,12 +43,12 @@ class HomeForm extends StatelessWidget {
                   prefixWidget: AppImage(
                     image: AppImages.calculatorIcon,
                     color: AppColors.of(context).basicBlue,
-                    width: 24,
-                    height: 24,
+                    width: 48.r,
+                    height: 48.r,
                   ),
                   buttonText: LocaleKeys.buttons_calculate.tr(),
                   verticalPadding: AppDimens.padding20.h,
-                  horizontalPadding: 60,
+                  horizontalPadding: 60.w,
                 ),
                 SizedBox(width: AppDimens.padding18.w),
                 AppButton(
@@ -57,10 +57,10 @@ class HomeForm extends StatelessWidget {
                   },
                   type: AppButtonType.secondaryGreen,
                   borderRadius: AppDimens.borderRadius12,
-                  prefixWidget: const AppImage(
+                  prefixWidget: AppImage(
                     image: AppImages.settingsIcon,
-                    width: 24,
-                    height: 24,
+                    width: 48.r,
+                    height: 48.r,
                   ),
                   buttonText: '',
                   verticalPadding: AppDimens.padding20.h,
