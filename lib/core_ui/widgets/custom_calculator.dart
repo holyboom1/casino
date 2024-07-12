@@ -39,7 +39,9 @@ class _CustomCalculatorState extends State<CustomCalculator> {
     });
   }
 
-  void _onDonePressed() {}
+  void _onDonePressed() {
+    appLocator<AppRouter>().router.goNamed(RouterConstants.calculatorResultRoute);
+  }
 
   @override
   Widget build(BuildContext context) {

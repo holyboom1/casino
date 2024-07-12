@@ -1,5 +1,6 @@
 export 'app_button.dart';
 export 'app_image.dart';
+export 'calculation_result_tile.dart';
 export 'currency_switcher.dart';
 export 'custom_calculator.dart';
 export 'input_field/input_field.dart';
