@@ -10,9 +10,21 @@ class SettingsCubit extends Cubit<SettingsState> {
   SettingsCubit({
     required AppRouter appRouter,
   })  : _appRouter = appRouter,
-        super(SettingsState()) {
+        super(const SettingsState()) {
     _init();
   }
 
   void _init() {}
+
+  void changeCurrency(Currency currency) {
+    emit(state.copyWith(currency: currency));
+  }
+
+  void changeMaxBetAmount(String maxBetAmount) {
+    emit(state.copyWith(maxBetAmount: maxBetAmount));
+  }
+
+  void displayMaxAmount(String maxBetAmount) {
+    emit(state.copyWith(maxBetAmount: maxBetAmount));
+  }
 }

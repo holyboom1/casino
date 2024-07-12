@@ -24,4 +24,8 @@ class CalculatorTableCubit extends Cubit<CalculatorTableState> {
   void plus(int number) {}
 
   void minus(int number) {}
+
+  void displayText(String displayText) {
+    emit(state.copyWith(displayText: displayText));
+  }
 }

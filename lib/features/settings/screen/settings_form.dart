@@ -59,28 +59,26 @@ class SettingsForm extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 10.h),
-                CurrencySwitcher(),
+                CurrencySwitcher(
+                  onCurrencyChanged: (Currency currency) {
+                    context.read<SettingsCubit>().changeCurrency(currency);
+                  },
+                ),
                 SizedBox(height: 48.h),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 54.h),
-                  decoration: BoxDecoration(
-                    color: AppColors.of(context).secondaryBg,
-                    borderRadius: BorderRadius.circular(24).r,
-                  ),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      LocaleKeys.common_comp_amount.tr(),
-                      style: AppFonts.interMedium30.copyWith(
-                        color: AppColors.of(context).basicBlue.withOpacity(0.6),
-                      ),
-                    ),
-                  ),
+                CustomDisplayContainer(
+                  isFocus: state.maxBetAmount.isNotEmpty,
+                  displayText: state.maxBetAmount,
+                  title: LocaleKeys.common_max_in_number.tr(),
                 ),
                 const Spacer(
                   flex: 2,
                 ),
-                const CustomCalculator(isSettingsCalculator: true),
+                CustomCalculator(
+                  isSettingsCalculator: true,
+                  onDisplayTextChanged: (String value) {
+                    context.read<SettingsCubit>().displayMaxAmount(value);
+                  },
+                ),
               ],
             ),
           ),

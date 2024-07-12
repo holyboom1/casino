@@ -8,8 +8,10 @@ import 'widgets.dart';
 
 class CustomCalculator extends StatefulWidget {
   final bool isSettingsCalculator;
+  final ValueChanged<String> onDisplayTextChanged;
 
   const CustomCalculator({
+    required this.onDisplayTextChanged,
     this.isSettingsCalculator = false,
     super.key,
   });
@@ -20,23 +22,61 @@ class CustomCalculator extends StatefulWidget {
 
 class _CustomCalculatorState extends State<CustomCalculator> {
   String _displayText = '';
+  double? _firstOperand;
+  double? _secondOperand;
+  String? _operator;
+
+  void _updateDisplayText(String value) {
+    setState(() {
+      _displayText = value;
+      widget.onDisplayTextChanged(_displayText); // Call the callback function
+    });
+  }
 
   void _onButtonPressed(String value) {
+    _updateDisplayText(_displayText + value);
+  }
+
+  void _onOperatorPressed(String operator) {
     setState(() {
-      _displayText += value;
+      if (_firstOperand == null) {
+        _firstOperand = double.tryParse(_displayText);
+        _updateDisplayText('');
+      }
+      _operator = operator;
     });
   }
 
   void _onEqualsPressed() {
     setState(() {
-      _displayText = 'Result';
+      _secondOperand = double.tryParse(_displayText);
+      if (_firstOperand != null && _secondOperand != null && _operator != null) {
+        switch (_operator) {
+          case '+':
+            _updateDisplayText((_firstOperand! + _secondOperand!).toString());
+            break;
+          case '-':
+            _updateDisplayText((_firstOperand! - _secondOperand!).toString());
+            break;
+          case 'x':
+            _updateDisplayText((_firstOperand! * _secondOperand!).toString());
+            break;
+          case '/':
+            _updateDisplayText(
+                (_secondOperand != 0) ? (_firstOperand! / _secondOperand!).toString() : 'Error');
+            break;
+        }
+        _firstOperand = null;
+        _secondOperand = null;
+        _operator = null;
+      }
     });
   }
 
   void _onClearPressed() {
-    setState(() {
-      _displayText = '';
-    });
+    if (_displayText.isNotEmpty) {
+      _updateDisplayText(_displayText.substring(0, _displayText.length - 1));
+    }
   }
 
   void _onDonePressed() {
@@ -52,27 +92,53 @@ class _CustomCalculatorState extends State<CustomCalculator> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          Container(
+            padding: const EdgeInsets.all(16.0).r,
+            decoration: BoxDecoration(
+              color: appColors.basicWhite,
+              borderRadius: BorderRadius.circular(8.0).r,
+              boxShadow: <BoxShadow>[
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.1),
+                  spreadRadius: 1,
+                  blurRadius: 5,
+                ),
+              ],
+            ),
+            child: Text(
+              _displayText,
+              style: AppFonts.playfairDisplay.copyWith(
+                fontSize: 24.0.sp,
+                color: appColors.basicBlue,
+              ),
+            ),
+          ),
+          const SizedBox(height: 20.0),
           if (!widget.isSettingsCalculator)
             _buildButtonRow([
               _buildButton(
                 text: '+',
                 value: '+',
                 type: AppButtonType.secondaryGreen,
+                onPressed: () => _onOperatorPressed('+'),
               ),
               _buildButton(
                 text: '-',
                 value: '-',
                 type: AppButtonType.secondaryGreen,
+                onPressed: () => _onOperatorPressed('-'),
               ),
               _buildButton(
                 text: 'x',
                 value: 'x',
                 type: AppButtonType.secondaryGreen,
+                onPressed: () => _onOperatorPressed('x'),
               ),
               _buildButton(
                 text: '/',
                 value: '/',
                 type: AppButtonType.secondaryGreen,
+                onPressed: () => _onOperatorPressed('/'),
               ),
               _buildButton(
                 text: '=',
@@ -132,27 +198,29 @@ class _CustomCalculatorState extends State<CustomCalculator> {
               type: AppButtonType.white,
             ),
           ]),
-          _buildButtonRow([
-            _buildButton(
-              text: '',
-              value: 'C',
-              type: AppButtonType.transparent,
-              onPressed: _onClearPressed,
-              prefixIcon: AppImages.clearIcon,
-            ),
-            _buildButton(
-              text: '0',
-              value: '0',
-              type: AppButtonType.white,
-            ),
-            _buildButton(
-              text: '',
-              value: 'Done',
-              type: AppButtonType.transparent,
-              onPressed: _onDonePressed,
-              prefixIcon: AppImages.doneIcon,
-            ),
-          ]),
+          _buildButtonRow(
+            [
+              _buildButton(
+                text: '',
+                value: 'C',
+                type: AppButtonType.transparent,
+                onPressed: _onClearPressed,
+                prefixIcon: AppImages.clearIcon,
+              ),
+              _buildButton(
+                text: '0',
+                value: '0',
+                type: AppButtonType.white,
+              ),
+              _buildButton(
+                text: '',
+                value: 'Done',
+                type: AppButtonType.transparent,
+                onPressed: _onDonePressed,
+                prefixIcon: AppImages.doneIcon,
+              ),
+            ],
+          ),
         ],
       ),
     );

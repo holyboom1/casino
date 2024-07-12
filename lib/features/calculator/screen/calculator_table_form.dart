@@ -12,6 +12,7 @@ class CalculatorTableForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CalculatorTableCubit, CalculatorTableState>(
       builder: (BuildContext context, CalculatorTableState state) {
+        final bool isFocus = state.displayText.isNotEmpty;
         if (state.rouletteCalculator == null) {
           return const Center(
             child: CircularProgressIndicator(),
@@ -53,21 +54,9 @@ class CalculatorTableForm extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 30.h),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 54).r,
-                  decoration: BoxDecoration(
-                    color: AppColors.of(context).secondaryBg,
-                    borderRadius: BorderRadius.circular(24).r,
-                  ),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      LocaleKeys.common_comp_amount.tr(),
-                      style: AppFonts.interMedium30.copyWith(
-                        color: AppColors.of(context).basicBlue.withOpacity(0.6),
-                      ),
-                    ),
-                  ),
+                CustomDisplayContainer(
+                  isFocus: isFocus,
+                  displayText: state.displayText,
                 ),
                 SizedBox(height: 30.h),
                 Container(
@@ -93,7 +82,11 @@ class CalculatorTableForm extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
-                const CustomCalculator(),
+                CustomCalculator(
+                  onDisplayTextChanged: (String value) {
+                    context.read<CalculatorTableCubit>().displayText(value);
+                  },
+                ),
               ],
             ),
           ),
