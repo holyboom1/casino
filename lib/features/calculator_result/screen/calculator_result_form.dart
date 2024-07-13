@@ -112,9 +112,8 @@ class CalculatorResultForm extends StatelessWidget {
                 Center(
                   child: AppButton(
                     onPressed: () {
-                      appLocator<AppRouter>()
-                          .router
-                          .pushNamed(RouterConstants.calculatorResultRoute);
+                      appLocator<RouletteCalculator>().clearRouletteFieldBets();
+                      appLocator<AppRouter>().router.goNamed(RouterConstants.mainRoute);
                     },
                     borderRadius: AppDimens.borderRadius12,
                     type: AppButtonType.white,

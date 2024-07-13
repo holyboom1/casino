@@ -21,7 +21,7 @@ class HomeForm extends StatelessWidget {
               children: <Widget>[
                 AppButton(
                   onPressed: () {
-                    appLocator<AppRouter>().router.pushNamed(RouterConstants.calculatorResultRoute);
+                    appLocator<RouletteCalculator>().clearRouletteFieldBets();
                   },
                   borderRadius: AppDimens.borderRadius12,
                   prefixWidget: AppImage(

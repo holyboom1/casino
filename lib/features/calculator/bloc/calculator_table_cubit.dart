@@ -6,21 +6,18 @@ part 'calculator_table_state.dart';
 
 class CalculatorTableCubit extends Cubit<CalculatorTableState> {
   final AppRouter _appRouter;
-  final RouletteCalculator _rouletteCalculator;
+  final bool isNewBet;
 
   CalculatorTableCubit({
     required AppRouter appRouter,
-    required RouletteCalculator rouletteCalculator,
     required RouletteCellModel number,
+    this.isNewBet = true,
   })  : _appRouter = appRouter,
-        _rouletteCalculator = rouletteCalculator,
         super(CalculatorTableState(number: number)) {
     _init();
   }
 
-  void _init() {
-    emit(state.copyWith(rouletteCalculator: _rouletteCalculator));
-  }
+  void _init() {}
 
   void plus(int number) {}
 
@@ -28,5 +25,28 @@ class CalculatorTableCubit extends Cubit<CalculatorTableState> {
 
   void displayText(String displayText) {
     emit(state.copyWith(displayText: displayText));
+  }
+
+  void onDonePressed(String value) {
+    final double newBet = double.tryParse(value) ?? 0;
+
+    if (isNewBet) {
+      if (newBet + state.number.bet.value > appLocator<RouletteCalculator>().maxBet) {
+        emit(state.copyWith(
+          errorText: LocaleKeys.errors_sum_error.tr(),
+        ));
+        return;
+      }
+      state.number.changeBet(newBet);
+      _appRouter.router.pop();
+    } else {
+      if (newBet > appLocator<RouletteCalculator>().maxBet) {
+        emit(state.copyWith(
+          errorText: LocaleKeys.errors_sum_error.tr(),
+        ));
+        return;
+      }
+      state.number.changeBet(newBet);
+    }
   }
 }

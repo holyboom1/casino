@@ -48,8 +48,8 @@ class CalculatorSelectWinNumberForm extends StatelessWidget {
               SizedBox(height: 30.h),
               RouletteTable(
                 onPressed: (RouletteCellModel number) {
-                  appLocator<AppRouter>().router.push(
-                        RouterConstants.calculatorTableRoute,
+                  appLocator<AppRouter>().router.goNamed(
+                        RouterConstants.calculatorResultRoute,
                         extra: number,
                       );
                 },

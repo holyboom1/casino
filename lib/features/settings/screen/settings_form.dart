@@ -79,6 +79,10 @@ class SettingsForm extends StatelessWidget {
                   onDisplayTextChanged: (String value) {
                     context.read<SettingsCubit>().displayMaxAmount(value);
                   },
+                  onDonePressed: (String value) {
+                    appLocator<RouletteCalculator>().clearRouletteFieldBets();
+                    appLocator<AppRouter>().router.pop();
+                  },
                 ),
               ],
             ),

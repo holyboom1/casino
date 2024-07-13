@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../core/core_export.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_fonts.dart';
@@ -7,11 +8,13 @@ class CustomDisplayContainer extends StatelessWidget {
   final bool isFocus;
   final String displayText;
   final String? title;
+  final bool isError;
 
   const CustomDisplayContainer({
     required this.isFocus,
     required this.displayText,
     this.title,
+    this.isError = false,
     super.key,
   });
 
@@ -23,7 +26,11 @@ class CustomDisplayContainer extends StatelessWidget {
         color: isFocus ? AppColors.of(context).basicWhite : AppColors.of(context).secondaryBg,
         borderRadius: BorderRadius.circular(24).r,
         border: Border.all(
-          color: isFocus ? AppColors.of(context).basicBlue : AppColors.transparent,
+          color: isError
+              ? AppColors.red
+              : isFocus
+                  ? AppColors.of(context).basicBlue
+                  : AppColors.transparent,
           width: 2,
         ),
       ),
@@ -34,19 +41,23 @@ class CustomDisplayContainer extends StatelessWidget {
           children: <Widget>[
             Text(
               title ?? LocaleKeys.common_comp_amount.tr(),
-              style: !isFocus
-                  ? AppFonts.interMedium42
-                      .copyWith(color: AppColors.of(context).basicBlue.withOpacity(0.6))
-                  : AppFonts.interMedium30
-                      .copyWith(color: AppColors.of(context).basicBlue.withOpacity(0.6)),
+              style: isError
+                  ? AppFonts.interMedium42.copyWith(color: AppColors.of(context).errorRed)
+                  : !isFocus
+                      ? AppFonts.interMedium42
+                          .copyWith(color: AppColors.of(context).basicBlue.withOpacity(0.6))
+                      : AppFonts.interMedium30
+                          .copyWith(color: AppColors.of(context).basicBlue.withOpacity(0.6)),
             ),
             if (isFocus)
               Text(
                 displayText,
                 style: AppFonts.interMedium42.copyWith(
-                  color: isFocus
-                      ? AppColors.of(context).basicBlue
-                      : AppColors.of(context).basicBlue.withOpacity(0.6),
+                  color: isError
+                      ? AppColors.red
+                      : isFocus
+                          ? AppColors.of(context).basicBlue
+                          : AppColors.of(context).basicBlue.withOpacity(0.6),
                 ),
               ),
           ],

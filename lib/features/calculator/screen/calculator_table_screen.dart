@@ -21,7 +21,6 @@ class CalculatorTableScreen extends StatelessWidget {
       create: (BuildContext context) => CalculatorTableCubit(
         number: number,
         appRouter: appLocator<AppRouter>(),
-        rouletteCalculator: appLocator<RouletteCalculator>(),
       ),
       child: CalculatorTableForm(),
     );

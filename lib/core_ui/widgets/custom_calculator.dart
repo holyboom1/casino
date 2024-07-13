@@ -9,10 +9,12 @@ import 'widgets.dart';
 class CustomCalculator extends StatefulWidget {
   final bool isSettingsCalculator;
   final ValueChanged<String> onDisplayTextChanged;
+  final Function(String) onDonePressed;
 
   const CustomCalculator({
     required this.onDisplayTextChanged,
     this.isSettingsCalculator = false,
+    required this.onDonePressed,
     super.key,
   });
 
@@ -80,7 +82,7 @@ class _CustomCalculatorState extends State<CustomCalculator> {
   }
 
   void _onDonePressed() {
-    appLocator<AppRouter>().router.goNamed(RouterConstants.calculatorResultRoute);
+    widget.onDonePressed(_displayText);
   }
 
   @override

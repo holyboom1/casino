@@ -52,14 +52,6 @@ class AppRouter {
                 path: RouterConstants.mainRoute,
                 name: RouterConstants.mainRoute,
                 builder: (BuildContext context, GoRouterState state) => HomeScreen(),
-                // routes: <RouteBase>[
-                //   GoRoute(
-                //     parentNavigatorKey: _navigatorKey,
-                //     path: RouterConstants.videoTutorialsRoute,
-                //     name: RouterConstants.videoTutorialsRoute,
-                //     builder: (BuildContext context, GoRouterState state) => VideoTutorialsScreen(),
-                //   ),
-                // ],
               ),
               GoRoute(
                 path: RouterConstants.calculatorTableRoute,
@@ -68,35 +60,28 @@ class AppRouter {
                   final RouletteCellModel number = state.extra as RouletteCellModel;
                   return CalculatorTableScreen(number: number);
                 },
-                routes: <RouteBase>[
-                  GoRoute(
-                    parentNavigatorKey: _navigatorKey,
-                    path: RouterConstants.calculatorResultRoute,
-                    name: RouterConstants.calculatorResultRoute,
-                    builder: (BuildContext context, GoRouterState state) =>
-                        CalculatorResultScreen(),
-                  ),
-                ],
               ),
               GoRoute(
                 path: RouterConstants.selectNumbersRoute,
                 name: RouterConstants.selectNumbersRoute,
                 builder: (BuildContext context, GoRouterState state) {
-                  return CalculatorSelectWinNumberScreen();
+                  return const CalculatorSelectWinNumberScreen();
+                },
+              ),
+              GoRoute(
+                path: RouterConstants.calculatorResultRoute,
+                name: RouterConstants.calculatorResultRoute,
+                builder: (BuildContext context, GoRouterState state) {
+                  final RouletteCellModel number = state.extra as RouletteCellModel;
+                  return CalculatorResultScreen(
+                    number: number,
+                  );
                 },
               ),
               GoRoute(
                 path: RouterConstants.settingsRoute,
                 name: RouterConstants.settingsRoute,
                 builder: (BuildContext context, GoRouterState state) => SettingsScreen(),
-                // routes: <RouteBase>[
-                //   GoRoute(
-                //     parentNavigatorKey: _navigatorKey,
-                //     path: RouterConstants.videoTutorialsRoute,
-                //     name: RouterConstants.videoTutorialsRoute,
-                //     builder: (BuildContext context, GoRouterState state) => VideoTutorialsScreen(),
-                //   ),
-                // ],
               ),
             ],
           ),

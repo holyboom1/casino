@@ -8,12 +8,16 @@ import '../bloc/calculator_result_cubit.dart';
 import 'calculator_result_form.dart';
 
 class CalculatorResultScreen extends StatelessWidget {
+  final RouletteCellModel number;
+
+  const CalculatorResultScreen({super.key, required this.number});
   @override
   Widget build(BuildContext context) {
     return BlocProvider<CalculatorResultCubit>(
       create: (BuildContext context) => CalculatorResultCubit(
         appRouter: appLocator<AppRouter>(),
         rouletteCalculator: appLocator<RouletteCalculator>(),
+        number: number,
       ),
       child: CalculatorResultForm(),
     );

@@ -13,11 +13,7 @@ class CalculatorTableForm extends StatelessWidget {
     return BlocBuilder<CalculatorTableCubit, CalculatorTableState>(
       builder: (BuildContext context, CalculatorTableState state) {
         final bool isFocus = state.displayText.isNotEmpty;
-        if (state.rouletteCalculator == null) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
+
         return Scaffold(
           appBar: AppBar(
             backgroundColor: AppColors.of(context).primaryBg,
@@ -57,7 +53,21 @@ class CalculatorTableForm extends StatelessWidget {
                 CustomDisplayContainer(
                   isFocus: isFocus,
                   displayText: state.displayText,
+                  isError: state.errorText.isNotEmpty,
                 ),
+                if (state.errorText.isNotEmpty) ...<Widget>[
+                  SizedBox(height: 20.h),
+                  Row(
+                    children: <Widget>[
+                      Text(
+                        state.errorText,
+                        style: AppFonts.interMedium30.copyWith(
+                          color: AppColors.of(context).errorRed.withOpacity(0.6),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
                 SizedBox(height: 30.h),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 20).h,
@@ -74,7 +84,7 @@ class CalculatorTableForm extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 20).h,
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    '4.000',
+                    state.number.bet.value.toStringAsFixed(0),
                     style: AppFonts.interMedium48.copyWith(
                       color: AppColors.of(context).basicBlue,
                       fontWeight: FontWeight.w800,
@@ -85,6 +95,9 @@ class CalculatorTableForm extends StatelessWidget {
                 CustomCalculator(
                   onDisplayTextChanged: (String value) {
                     context.read<CalculatorTableCubit>().displayText(value);
+                  },
+                  onDonePressed: (String value) {
+                    context.read<CalculatorTableCubit>().onDonePressed(value);
                   },
                 ),
                 const Spacer(),
