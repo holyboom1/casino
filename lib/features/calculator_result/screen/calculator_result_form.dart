@@ -63,7 +63,7 @@ class CalculatorResultForm extends StatelessWidget {
                           ),
                           SizedBox(width: AppDimens.padding10.w),
                           Text(
-                            state.betAmount,
+                            state.result.betAmount,
                             style: AppFonts.interMedium48.copyWith(
                               color: AppColors.of(context).basicBlue,
                             ),
@@ -73,37 +73,37 @@ class CalculatorResultForm extends StatelessWidget {
                       SizedBox(height: AppDimens.size50.h),
                       CalculationResultTile(
                         title: LocaleKeys.common_bet_amount.tr(),
-                        value: state.betAmount,
+                        value: state.result.betAmount,
                       ),
                       Divider(color: AppColors.of(context).basicBlue.withOpacity(0.1)),
                       CalculationResultTile(
                         title: LocaleKeys.common_change.tr(),
-                        value: state.change,
+                        value: state.result.change,
                       ),
                       Divider(color: AppColors.of(context).basicBlue.withOpacity(0.1)),
                       CalculationResultTile(
                         title: LocaleKeys.common_bet_amount_without_change.tr(),
-                        value: state.betAmountWithoutChange,
+                        value: state.result.betAmountWithoutChange,
                       ),
                       Divider(color: AppColors.of(context).basicBlue.withOpacity(0.1)),
                       CalculationResultTile(
                         title: LocaleKeys.common_display_in_num.tr(),
-                        value: state.displayInNum,
+                        value: state.result.displayInNum,
                       ),
                       Divider(color: AppColors.of(context).basicBlue.withOpacity(0.1)),
                       CalculationResultTile(
                         title: LocaleKeys.common_display_in_num_forehead.tr(),
-                        value: state.displayInNumForehead,
+                        value: state.result.displayInNumForehead,
                       ),
                       Divider(color: AppColors.of(context).basicBlue.withOpacity(0.1)),
                       CalculationResultTile(
                         title: LocaleKeys.common_completion_payment.tr(),
-                        value: state.completionPayment,
+                        value: state.result.completionPayment,
                       ),
                       Divider(color: AppColors.of(context).basicBlue.withOpacity(0.1)),
                       CalculationResultTile(
                         title: LocaleKeys.common_payment_of_delivered.tr(),
-                        value: state.paymentOfDelivered,
+                        value: state.result.paymentOfDelivered,
                       ),
                     ],
                   ),

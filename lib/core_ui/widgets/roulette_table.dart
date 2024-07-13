@@ -39,12 +39,17 @@ class RouletteTable extends StatelessWidget {
                       fontSize: 80.sp,
                     ),
                   ),
-                  Text(
-                    'cell.bet',
-                    style: AppFonts.playfairDisplay.copyWith(
-                      color: AppColors.of(context).textGray,
-                      fontSize: 20.sp,
-                    ),
+                  ValueListenableBuilder<double>(
+                    valueListenable: rouletteCalculator.rulletteFieldBets[0]!.bet,
+                    builder: (BuildContext context, double value, Widget? child) {
+                      return Text(
+                        '${value.toStringAsFixed(0)} / ${rouletteCalculator.maxBet.toStringAsFixed(0)}',
+                        style: AppFonts.playfairDisplay.copyWith(
+                          color: AppColors.of(context).textGray,
+                          fontSize: 20.sp,
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
@@ -142,12 +147,17 @@ class CellWidget extends StatelessWidget {
                 fontSize: 60.sp,
               ),
             ),
-            Text(
-              'cell.bet',
-              style: AppFonts.playfairDisplay.copyWith(
-                color: AppColors.of(context).textGray,
-                fontSize: 24.sp,
-              ),
+            ValueListenableBuilder<double>(
+              valueListenable: cell.bet,
+              builder: (BuildContext context, double value, Widget? child) {
+                return Text(
+                  '${value.toStringAsFixed(0)} / ${appLocator<RouletteCalculator>().maxBet.toStringAsFixed(0)}',
+                  style: AppFonts.playfairDisplay.copyWith(
+                    color: AppColors.of(context).textGray,
+                    fontSize: 24.sp,
+                  ),
+                );
+              },
             ),
           ],
         ),

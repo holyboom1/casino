@@ -60,6 +60,7 @@ class SettingsForm extends StatelessWidget {
                 ),
                 SizedBox(height: 10.h),
                 CurrencySwitcher(
+                  selectedCurrency: state.currency,
                   onCurrencyChanged: (Currency currency) {
                     context.read<SettingsCubit>().changeCurrency(currency);
                   },

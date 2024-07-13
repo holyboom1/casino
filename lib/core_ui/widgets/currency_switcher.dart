@@ -6,9 +6,11 @@ import '../theme/app_fonts.dart';
 
 class CurrencySwitcher extends StatefulWidget {
   final Function(Currency) onCurrencyChanged;
+  final Currency selectedCurrency;
 
   const CurrencySwitcher({
     required this.onCurrencyChanged,
+    required this.selectedCurrency,
     super.key,
   });
 
@@ -17,7 +19,13 @@ class CurrencySwitcher extends StatefulWidget {
 }
 
 class _CurrencySwitcherState extends State<CurrencySwitcher> {
-  Currency _selectedCurrency = Currency.EUR;
+  late Currency _selectedCurrency;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedCurrency = widget.selectedCurrency;
+  }
 
   void _onCurrencyTap(Currency currency) {
     widget.onCurrencyChanged(currency);

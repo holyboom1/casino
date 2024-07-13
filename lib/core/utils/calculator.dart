@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 import '../../core_ui/theme/app_colors.dart';
@@ -101,6 +102,45 @@ class RouletteCalculator {
     }
     return 0;
   }
+
+  CalculationResult calculateResult({
+    required RouletteCellModel winCell,
+  }) {
+    double betAmount = 0;
+    double change = 0;
+    double betAmountWithoutChange = 0;
+    double displayInNum = 0;
+    double displayInNumForehead = 0;
+    double completionPayment = 0;
+    double paymentOfDelivered = 0;
+
+    /// ХЗ Что тут считать надо . Вместо этого метода можно сделать метод который будет считать  выигрышь
+    for (int i = 0; i < 37; i++) {
+      betAmount += rulletteFieldBets[i]!.bet.value;
+    }
+
+    betAmountWithoutChange = betAmount;
+
+    if (betAmount > _maxBet) {
+      change = betAmount - _maxBet;
+      betAmount = _maxBet;
+    }
+
+    displayInNum = betAmount * 36;
+    displayInNumForehead = betAmount * 36;
+    completionPayment = displayInNum + betAmount;
+    paymentOfDelivered = completionPayment - betAmount;
+
+    return CalculationResult(
+      betAmount: betAmount.toStringAsFixed(2),
+      change: change.toStringAsFixed(2),
+      betAmountWithoutChange: betAmountWithoutChange.toStringAsFixed(2),
+      displayInNum: displayInNum.toStringAsFixed(2),
+      displayInNumForehead: displayInNumForehead.toStringAsFixed(2),
+      completionPayment: completionPayment.toStringAsFixed(2),
+      paymentOfDelivered: paymentOfDelivered.toStringAsFixed(2),
+    );
+  }
 }
 
 class RouletteCellModel {
@@ -121,4 +161,55 @@ class RouletteCellModel {
   void clearBet() {
     bet.value = 0;
   }
+}
+
+class CalculationResult extends Equatable {
+  final String betAmount;
+  final String change;
+  final String betAmountWithoutChange;
+  final String displayInNum;
+  final String displayInNumForehead;
+  final String completionPayment;
+  final String paymentOfDelivered;
+
+  const CalculationResult({
+    this.betAmount = '0',
+    this.change = '0',
+    this.betAmountWithoutChange = '0',
+    this.displayInNum = '0',
+    this.displayInNumForehead = '0',
+    this.completionPayment = '0',
+    this.paymentOfDelivered = '0',
+  });
+
+  CalculationResult copyWith({
+    String? betAmount,
+    String? change,
+    String? betAmountWithoutChange,
+    String? displayInNum,
+    String? displayInNumForehead,
+    String? completionPayment,
+    String? paymentOfDelivered,
+  }) {
+    return CalculationResult(
+      betAmount: betAmount ?? this.betAmount,
+      change: change ?? this.change,
+      betAmountWithoutChange: betAmountWithoutChange ?? this.betAmountWithoutChange,
+      displayInNum: displayInNum ?? this.displayInNum,
+      displayInNumForehead: displayInNumForehead ?? this.displayInNumForehead,
+      completionPayment: completionPayment ?? this.completionPayment,
+      paymentOfDelivered: paymentOfDelivered ?? this.paymentOfDelivered,
+    );
+  }
+
+  @override
+  List<Object?> get props => <Object?>[
+        betAmount,
+        change,
+        betAmountWithoutChange,
+        displayInNum,
+        displayInNumForehead,
+        completionPayment,
+        paymentOfDelivered,
+      ];
 }

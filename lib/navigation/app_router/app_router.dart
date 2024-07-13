@@ -5,6 +5,7 @@ import '../../core/constants/route_constants.dart';
 import '../../core/utils/calculator.dart';
 import '../../features/calculator/screen/calculator_table_screen.dart';
 import '../../features/calculator_result/screen/calculator_result_screen.dart';
+import '../../features/calculator_select_win_number/screen/calculator_select_win_number_screen.dart';
 import '../../features/home/screen/home_screen.dart';
 import '../../features/main/screen/main_screen.dart';
 import '../../features/settings/screen/settings_screen.dart';
@@ -76,6 +77,13 @@ class AppRouter {
                         CalculatorResultScreen(),
                   ),
                 ],
+              ),
+              GoRoute(
+                path: RouterConstants.selectNumbersRoute,
+                name: RouterConstants.selectNumbersRoute,
+                builder: (BuildContext context, GoRouterState state) {
+                  return CalculatorSelectWinNumberScreen();
+                },
               ),
               GoRoute(
                 path: RouterConstants.settingsRoute,
