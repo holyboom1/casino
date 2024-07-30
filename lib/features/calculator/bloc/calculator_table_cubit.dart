@@ -17,7 +17,11 @@ class CalculatorTableCubit extends Cubit<CalculatorTableState> {
     _init();
   }
 
-  void _init() {}
+  void _init() {
+    if (state.displayText.isEmpty) {
+      emit(state.copyWith(displayText: state.number.bet.value.toString()));
+    }
+  }
 
   void plus(int number) {}
 

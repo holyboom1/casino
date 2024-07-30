@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../core/core_export.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_fonts.dart';
@@ -10,11 +9,13 @@ class CustomCalculator extends StatefulWidget {
   final bool isSettingsCalculator;
   final ValueChanged<String> onDisplayTextChanged;
   final Function(String) onDonePressed;
+  final bool isReadyForDone;
 
   const CustomCalculator({
     required this.onDisplayTextChanged,
     this.isSettingsCalculator = false,
     required this.onDonePressed,
+    this.isReadyForDone = false,
     super.key,
   });
 
@@ -24,9 +25,7 @@ class CustomCalculator extends StatefulWidget {
 
 class _CustomCalculatorState extends State<CustomCalculator> {
   String _displayText = '';
-  double? _firstOperand;
-  double? _secondOperand;
-  String? _operator;
+  String _formula = '';
 
   void _updateDisplayText(String value) {
     setState(() {
@@ -36,49 +35,91 @@ class _CustomCalculatorState extends State<CustomCalculator> {
   }
 
   void _onButtonPressed(String value) {
-    _updateDisplayText(_displayText + value);
+    setState(() {
+      _formula += value;
+      _updateDisplayText(_formula);
+    });
   }
 
   void _onOperatorPressed(String operator) {
     setState(() {
-      if (_firstOperand == null) {
-        _firstOperand = double.tryParse(_displayText);
-        _updateDisplayText('');
+      if (_formula.isNotEmpty && !_isOperator(_formula[_formula.length - 1])) {
+        _formula += ' $operator ';
+        _updateDisplayText(_formula);
       }
-      _operator = operator;
     });
+  }
+
+  bool _isOperator(String character) {
+    return <String>['+', '-', '*', '/'].contains(character);
   }
 
   void _onEqualsPressed() {
-    setState(() {
-      _secondOperand = double.tryParse(_displayText);
-      if (_firstOperand != null && _secondOperand != null && _operator != null) {
-        switch (_operator) {
-          case '+':
-            _updateDisplayText((_firstOperand! + _secondOperand!).toString());
-            break;
-          case '-':
-            _updateDisplayText((_firstOperand! - _secondOperand!).toString());
-            break;
-          case 'x':
-            _updateDisplayText((_firstOperand! * _secondOperand!).toString());
-            break;
-          case '/':
-            _updateDisplayText(
-                (_secondOperand != 0) ? (_firstOperand! / _secondOperand!).toString() : 'Error');
-            break;
-        }
-        _firstOperand = null;
-        _secondOperand = null;
-        _operator = null;
+    try {
+      final int result = _evaluateExpression(_formula);
+      setState(() {
+        _updateDisplayText(result.toString());
+        _formula = result.toString();
+      });
+    } catch (e) {
+      setState(() {
+        _updateDisplayText('Error');
+        _formula = '';
+      });
+    }
+  }
+
+  int _evaluateExpression(String expression) {
+    final List<String> tokens = expression.split(' ');
+    final List<int> values = <int>[];
+    final List<String> operators = <String>[];
+
+    for (var token in tokens) {
+      if (token.isEmpty) continue;
+      if (_isOperator(token)) {
+        operators.add(token);
+      } else {
+        values.add(int.parse(token));
       }
-    });
+    }
+
+    while (operators.isNotEmpty) {
+      final String operator = operators.removeAt(0);
+      final int a = values.removeAt(0);
+      final int b = values.removeAt(0);
+      final int result;
+
+      switch (operator) {
+        case '+':
+          result = a + b;
+          break;
+        case '-':
+          result = a - b;
+          break;
+        case '*':
+          result = a * b;
+          break;
+        case '/':
+          if (b == 0) throw Exception('Division by zero');
+          result = a ~/ b;
+          break;
+        default:
+          throw Exception('Unknown operator');
+      }
+
+      values.insert(0, result);
+    }
+
+    return values.single;
   }
 
   void _onClearPressed() {
-    if (_displayText.isNotEmpty) {
-      _updateDisplayText(_displayText.substring(0, _displayText.length - 1));
-    }
+    setState(() {
+      if (_formula.isNotEmpty) {
+        _formula = _formula.substring(0, _formula.length - 1);
+        _updateDisplayText(_formula);
+      }
+    });
   }
 
   void _onDonePressed() {
@@ -87,15 +128,13 @@ class _CustomCalculatorState extends State<CustomCalculator> {
 
   @override
   Widget build(BuildContext context) {
-    final AppColors appColors = AppColors.of(context);
-
     return Padding(
       padding: const EdgeInsets.all(16.0).r,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           if (!widget.isSettingsCalculator)
-            _buildButtonRow([
+            _buildButtonRow(<Widget>[
               _buildButton(
                 text: '+',
                 value: '+',
@@ -110,9 +149,9 @@ class _CustomCalculatorState extends State<CustomCalculator> {
               ),
               _buildButton(
                 text: 'x',
-                value: 'x',
+                value: '*',
                 type: AppButtonType.secondaryGreen,
-                onPressed: () => _onOperatorPressed('x'),
+                onPressed: () => _onOperatorPressed('*'),
               ),
               _buildButton(
                 text: '/',
@@ -127,7 +166,7 @@ class _CustomCalculatorState extends State<CustomCalculator> {
                 onPressed: _onEqualsPressed,
               ),
             ]),
-          _buildButtonRow([
+          _buildButtonRow(<Widget>[
             _buildButton(
               text: '1',
               value: '1',
@@ -144,7 +183,7 @@ class _CustomCalculatorState extends State<CustomCalculator> {
               type: AppButtonType.white,
             ),
           ]),
-          _buildButtonRow([
+          _buildButtonRow(<Widget>[
             _buildButton(
               text: '4',
               value: '4',
@@ -161,7 +200,7 @@ class _CustomCalculatorState extends State<CustomCalculator> {
               type: AppButtonType.white,
             ),
           ]),
-          _buildButtonRow([
+          _buildButtonRow(<Widget>[
             _buildButton(
               text: '7',
               value: '7',
@@ -179,7 +218,7 @@ class _CustomCalculatorState extends State<CustomCalculator> {
             ),
           ]),
           _buildButtonRow(
-            [
+            <Widget>[
               _buildButton(
                 text: '',
                 value: 'C',
@@ -195,7 +234,8 @@ class _CustomCalculatorState extends State<CustomCalculator> {
               _buildButton(
                 text: '',
                 value: 'Done',
-                type: AppButtonType.transparent,
+                type:
+                    widget.isReadyForDone ? AppButtonType.primaryGreen : AppButtonType.transparent,
                 onPressed: _onDonePressed,
                 prefixIcon: AppImages.doneIcon,
               ),

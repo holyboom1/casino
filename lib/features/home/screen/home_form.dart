@@ -16,6 +16,7 @@ class HomeForm extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             backgroundColor: AppColors.of(context).primaryBg,
+            toolbarHeight: 110.h,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[

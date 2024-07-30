@@ -36,25 +36,28 @@ class CalculatorSelectWinNumberForm extends StatelessWidget {
               ),
             ),
           ),
-          body: Column(
-            children: <Widget>[
-              Text(
-                LocaleKeys.common_select_the_drawn_number.tr(),
-                style: AppFonts.interMedium30.copyWith(
-                  color: AppColors.of(context).basicBlue,
-                  fontWeight: FontWeight.w800,
+          body: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Text(
+                  LocaleKeys.common_select_the_drawn_number.tr(),
+                  style: AppFonts.interMedium30.copyWith(
+                    color: AppColors.of(context).basicBlue,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 50.sp,
+                  ),
                 ),
-              ),
-              SizedBox(height: 30.h),
-              RouletteTable(
-                onPressed: (RouletteCellModel number) {
-                  appLocator<AppRouter>().router.goNamed(
-                        RouterConstants.calculatorResultRoute,
-                        extra: number,
-                      );
-                },
-              ),
-            ],
+                SizedBox(height: 30.h),
+                RouletteTable(
+                  onPressed: (RouletteCellModel number) {
+                    appLocator<AppRouter>().router.goNamed(
+                          RouterConstants.calculatorResultRoute,
+                          extra: number,
+                        );
+                  },
+                ),
+              ],
+            ),
           ),
         );
       },

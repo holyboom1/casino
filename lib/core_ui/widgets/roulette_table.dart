@@ -9,90 +9,98 @@ class RouletteTable extends StatelessWidget {
   final RouletteCalculator rouletteCalculator = appLocator<RouletteCalculator>();
 
   RouletteTable({
-    super.key,
     required this.onPressed,
+    super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        SizedBox(height: 20.h),
-        CustomPaint(
-          painter:
-              RouletteTablePainter(lineColor: Colors.black, bgColor: AppColors.of(context).tableBg),
-          child: GestureDetector(
-            onTap: () => onPressed(rouletteCalculator.rulletteFieldBets[0]!),
-            child: SizedBox(
-              height: 130.h,
-              width: 894.w,
-              child: Column(
-                children: <Widget>[
-                  Text(
-                    '0',
-                    textHeightBehavior: const TextHeightBehavior(
-                      applyHeightToFirstAscent: false,
-                      applyHeightToLastDescent: false,
-                    ),
-                    style: AppFonts.playfairDisplay.copyWith(
-                      color: AppColors.of(context).textGray,
-                      fontSize: 80.sp,
-                    ),
-                  ),
-                  ValueListenableBuilder<double>(
-                    valueListenable: rouletteCalculator.rulletteFieldBets[0]!.bet,
-                    builder: (BuildContext context, double value, Widget? child) {
-                      return Text(
-                        '${value.toStringAsFixed(0)} / ${rouletteCalculator.maxBet.toStringAsFixed(0)}',
+    return SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          SizedBox(height: 20.h),
+          CustomPaint(
+            painter: RouletteTablePainter(
+              lineColor: Colors.black,
+              bgColor: AppColors.of(context).tableBg,
+            ),
+            child: GestureDetector(
+              onTap: () => onPressed(rouletteCalculator.rulletteFieldBets[0]!),
+              child: SizedBox(
+                height: 130.h,
+                width: 894.w,
+                child: Column(
+                  children: <Widget>[
+                    Expanded(
+                      child: Text(
+                        '0',
+                        textHeightBehavior: const TextHeightBehavior(
+                          applyHeightToFirstAscent: false,
+                          applyHeightToLastDescent: false,
+                        ),
                         style: AppFonts.playfairDisplay.copyWith(
                           color: AppColors.of(context).textGray,
-                          fontSize: 20.sp,
+                          fontSize: 80.sp,
                         ),
-                      );
-                    },
-                  ),
-                ],
+                      ),
+                    ),
+                    ValueListenableBuilder<double>(
+                      valueListenable: rouletteCalculator.rulletteFieldBets[0]!.bet,
+                      builder: (BuildContext context, double value, Widget? child) {
+                        return Text(
+                          rouletteCalculator.rulletteFieldBets[0]!.bet.value == 0
+                              ? ''
+                              : '${value.toStringAsFixed(0)} / ${rouletteCalculator.maxBet.toStringAsFixed(0)}',
+                          style: AppFonts.playfairDisplay.copyWith(
+                            color: AppColors.of(context).textGray,
+                            fontSize: 22.sp,
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-        Row(
-          children: <Widget>[
-            const Spacer(),
-            Column(
-              children: <Widget>[
-                for (int i = 0; i < 12; i++) ...<Widget>[
-                  Row(
-                    children: <Widget>[
-                      for (int j = 0; j < 3; j++)
-                        CellWidget(
-                          cell: rouletteCalculator
-                              .rulletteFieldBets[rouletteCalculator.cellNumber(i, j)]!,
-                          index: j,
-                          crossIndex: i,
-                          onPressed: onPressed,
+          Row(
+            children: <Widget>[
+              const Spacer(),
+              Column(
+                children: <Widget>[
+                  for (int i = 0; i < 12; i++) ...<Widget>[
+                    Row(
+                      children: <Widget>[
+                        for (int j = 0; j < 3; j++)
+                          CellWidget(
+                            cell: rouletteCalculator
+                                .rulletteFieldBets[rouletteCalculator.cellNumber(i, j)]!,
+                            index: j,
+                            crossIndex: i,
+                            onPressed: onPressed,
+                          ),
+                      ],
+                    ),
+                    if ((i + 1) % 4 == 0 && i != 11)
+                      Container(
+                        width: 900.w,
+                        height: 10.h,
+                        decoration: BoxDecoration(
+                          color: AppColors.of(context).tableBg,
+                          border: const Border(
+                            left: BorderSide(width: 2.0),
+                            right: BorderSide(width: 2.0),
+                          ),
                         ),
-                    ],
-                  ),
-                  if ((i + 1) % 4 == 0 && i != 11)
-                    Container(
-                      width: 900.w,
-                      height: 10.h,
-                      decoration: BoxDecoration(
-                        color: AppColors.of(context).tableBg,
-                        border: const Border(
-                          left: BorderSide(width: 2.0),
-                          right: BorderSide(width: 2.0),
-                        ),
-                      ),
-                    )
-                ]
-              ],
-            ),
-            const Spacer(),
-          ],
-        )
-      ],
+                      )
+                  ]
+                ],
+              ),
+              const Spacer(),
+            ],
+          )
+        ],
+      ),
     );
   }
 }
@@ -135,7 +143,9 @@ class CellWidget extends StatelessWidget {
           color: AppColors.of(context).tableBg,
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            SizedBox(height: 10.h),
             Text(
               cell.number.toString(),
               textHeightBehavior: const TextHeightBehavior(
@@ -147,18 +157,20 @@ class CellWidget extends StatelessWidget {
                 fontSize: 60.sp,
               ),
             ),
-            ValueListenableBuilder<double>(
-              valueListenable: cell.bet,
-              builder: (BuildContext context, double value, Widget? child) {
-                return Text(
-                  '${value.toStringAsFixed(0)} / ${appLocator<RouletteCalculator>().maxBet.toStringAsFixed(0)}',
-                  style: AppFonts.playfairDisplay.copyWith(
-                    color: AppColors.of(context).textGray,
-                    fontSize: 24.sp,
+            cell.bet.value == 0
+                ? SizedBox(height: 33.h)
+                : ValueListenableBuilder<double>(
+                    valueListenable: cell.bet,
+                    builder: (BuildContext context, double value, Widget? child) {
+                      return Text(
+                        '${value.toStringAsFixed(0)} / ${appLocator<RouletteCalculator>().maxBet.toStringAsFixed(0)}',
+                        style: AppFonts.playfairDisplay.copyWith(
+                          color: AppColors.of(context).textGray,
+                          fontSize: 22.sp,
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
-            ),
           ],
         ),
       ),

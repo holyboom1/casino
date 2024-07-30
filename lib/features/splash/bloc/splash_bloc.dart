@@ -8,6 +8,7 @@ import '../../../core/constants/route_constants.dart';
 import '../../../navigation/app_router/app_router.dart';
 
 part 'splash_event.dart';
+
 part 'splash_state.dart';
 
 class SplashBloc extends Bloc<SplashEvent, SplashState> {
@@ -26,6 +27,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     InitEvent event,
     Emitter<SplashState> emit,
   ) async {
+    await Future<dynamic>.delayed(const Duration(milliseconds: 500));
     FlutterNativeSplash.remove();
     try {
       unawaited(_appRouter.router.replace(RouterConstants.mainRoute));
