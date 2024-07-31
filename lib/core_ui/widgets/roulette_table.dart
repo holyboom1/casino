@@ -163,7 +163,9 @@ class CellWidget extends StatelessWidget {
                     valueListenable: cell.bet,
                     builder: (BuildContext context, double value, Widget? child) {
                       return Text(
-                        '${value.toStringAsFixed(0)} / ${appLocator<RouletteCalculator>().maxBet.toStringAsFixed(0)}',
+                        cell.bet.value == 0
+                            ? ''
+                            : '${value.toStringAsFixed(0)} / ${appLocator<RouletteCalculator>().maxBet.toStringAsFixed(0)}',
                         style: AppFonts.playfairDisplay.copyWith(
                           color: AppColors.of(context).textGray,
                           fontSize: 22.sp,
